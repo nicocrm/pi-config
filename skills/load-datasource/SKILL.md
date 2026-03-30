@@ -30,7 +30,7 @@ qp = ReportQueryParamsProvider.instance.default_query_params()
 qp.user = u
 qp.unblinded = True
 ds = get_datasource(DATASOURCE_ID, qp)
-df = ds.data.to_pl()
+df = ds.data.to_pl().collect()
 
 print(f'Shape: {df.shape}')
 print(f'Columns ({len(df.columns)}):')
@@ -82,4 +82,4 @@ After getting the output, provide a concise summary:
 - `manage.py shell` prints an auto-import line — ignore it
 - For large datasources, you can add `qp.select = {"col1", "col2"}` to limit columns
 - Set `qp.unblinded = False` if blinded view is needed
-- The `ds.data` object is a DataSourceData; `.to_pl()` converts to a Polars DataFrame
+- The `ds.data` object is a DataSourceData; `.to_pl()` returns a Polars **LazyFrame**, so call `.collect()` to materialize it
