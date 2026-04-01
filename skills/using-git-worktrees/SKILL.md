@@ -1,5 +1,5 @@
 ---
-name: git-worktree
+name: using-git-worktrees
 description: Create a git worktree for a specified branch. Fuzzy-matches the branch name against existing branches, confirms with the user if multiple matches, then checks out the worktree.
 ---
 

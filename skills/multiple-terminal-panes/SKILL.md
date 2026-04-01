@@ -1,6 +1,6 @@
 ---
-name: zellij-pi
-description: Launch a new pi coding agent instance in a separate Zellij pane and send it a command. Use when the user wants to delegate work (e.g. implementing a plan) to a new pi instance running in parallel.
+name: multiple-terminal-panes
+description: Launch a new pi coding agent instance in a separate terminal pane using Zellij and send it a command. Use when the user wants to delegate work (e.g. implementing a plan) to a new pi instance running in parallel.
 ---
 
 # Zellij Pi Launcher
