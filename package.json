@@ -13,7 +13,7 @@
   "pi": {
     "extensions": [
       "./extensions",
-      "node_modules/pi-subagents"
+      "node_modules/pi-superpowers"
     ],
     "skills": [
       "./skills"
