@@ -16,7 +16,9 @@
       "node_modules/pi-superpowers"
     ],
     "skills": [
-      "./skills"
+      "./skills",
+      "node_modules/pi-superpowers/skills",
+      "!node_modules/pi-superpowers/skills/using-git-worktrees"
     ],
     "prompts": [
       "./prompts"
