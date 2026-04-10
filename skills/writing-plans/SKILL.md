@@ -98,21 +98,44 @@ git commit -m "feat: add specific feature"
 
 ## Execution Handoff
 
-After saving the plan, offer execution choice:
+After saving the plan, use the `questionnaire` tool to ask two questions:
 
-**"Plan complete and saved to `docs/plans/<filename>.md`. Two execution options:**
+### Question 1: Branch Strategy
 
-**1. Subagent-Driven (this session)** - I dispatch fresh subagent per task, review between tasks, fast iteration
+First, check if already in a worktree:
+```bash
+git rev-parse --show-toplevel 2>/dev/null
+git worktree list
+```
 
-**2. Parallel Session (separate)** - Open new session with executing-plans, batch execution with checkpoints
+**If already in a worktree (not the main repo):** Skip this question, note the current path.
 
-**Which approach?"**
+**If on main repo**, ask: **"Work on a separate branch?"**
+
+- **Yes, create a worktree** - Isolated workspace on a new branch
+- **No, stay on current branch** - Work in place
+
+**If worktree chosen:**
+- **REQUIRED SUB-SKILL:** Use `/skill:using-git-worktrees` to create the worktree NOW, before proceeding
+- Note the worktree path for the next step
+
+### Question 2: Execution Approach
+
+**"How to execute?"**
+
+- **Subagent-Driven (this session)** - Fresh subagent per task, review between tasks, fast iteration
+- **Parallel Session (separate)** - New terminal pane with executing-plans, batch execution with checkpoints
+
+### Then Execute
 
 **If Subagent-Driven chosen:**
 - **REQUIRED SUB-SKILL:** Use `/skill:subagent-driven-development`
 - Stay in this session
+- If worktree was created, `cd` into it first
 - Fresh subagent per task + code review
 
 **If Parallel Session chosen:**
-- Guide them to open new session in worktree
-- **REQUIRED SUB-SKILL:** New session uses `/skill:executing-plans`
+- **REQUIRED SUB-SKILL:** Use `/skill:multiple-terminal-panes` to launch a new pi instance
+- Set the working directory to the worktree path (or current dir if no worktree)
+- Include the plan file path in the prompt so the new session can find it
+- New session uses `/skill:executing-plans`
