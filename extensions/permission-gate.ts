@@ -8,7 +8,17 @@
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
 
 export default function (pi: ExtensionAPI) {
-	const dangerousPatterns = [/\brm\s+(-rf?|--recursive)/i, /\bsudo\b/i, /\b(chmod|chown)\b.*777/i];
+	const dangerousPatterns = [
+    /\brm\s+(-rf?|--recursive)/i, 
+    /\bsudo\b/i, 
+    /\b(chmod|chown)\b.*777/i,
+    // don't deploy without confirmation
+    /\bmake deploy/,
+    // don't fuck with lambdas
+    /\baws lambda (create|update)/,
+    // I better keep an eye on this
+    /\bssh\b/,
+  ];
 
 	pi.on("tool_call", async (event, ctx) => {
 		if (event.toolName !== "bash") return undefined;
