@@ -118,6 +118,11 @@ git worktree list
 **If worktree chosen:**
 - **REQUIRED SUB-SKILL:** Use `/skill:using-git-worktrees` to create the worktree NOW, before proceeding
 - Note the worktree path for the next step
+- **Copy the plan file to the new worktree** so it's available in the isolated workspace:
+  ```bash
+  cp docs/plans/YYYY-MM-DD-<feature-name>.md <worktree-path>/docs/plans/YYYY-MM-DD-<feature-name>.md
+  ```
+  This ensures the executing session can find the plan at the standard path.
 
 ### Question 2: Execution Approach
 
@@ -138,4 +143,5 @@ git worktree list
 - **REQUIRED SUB-SKILL:** Use `/skill:multiple-terminal-panes` to launch a new pi instance
 - Set the working directory to the worktree path (or current dir if no worktree)
 - Include the plan file path in the prompt so the new session can find it
+- **If a worktree was created:** The plan file has already been copied to `<worktree-path>/docs/plans/YYYY-MM-DD-<feature-name>.md`
 - New session uses `/skill:executing-plans`
