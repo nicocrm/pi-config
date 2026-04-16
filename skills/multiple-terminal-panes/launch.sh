@@ -29,8 +29,9 @@ if [ ! -d "$CWD" ]; then
   exit 1
 fi
 
-# Check if pi command exists
-if ! command -v pi &> /dev/null; then
+# Resolve full path to pi (zellij subshells may not inherit PATH)
+PI_BIN="$(command -v pi 2>/dev/null || true)"
+if [ -z "$PI_BIN" ]; then
   echo "ERROR: 'pi' command not found in PATH" >&2
   exit 1
 fi
@@ -43,7 +44,7 @@ if [ ${#PI_FLAGS[@]} -eq 0 ]; then
     --name "$PANE_NAME" \
     --floating \
     --cwd "$CWD" \
-    -- pi "$PROMPT"; then
+    -- "$PI_BIN" "$PROMPT"; then
     echo "✅ Successfully launched pi in floating pane '$PANE_NAME'"
   else
     echo "❌ Failed to launch pi in pane '$PANE_NAME'" >&2
@@ -55,7 +56,7 @@ else
     --name "$PANE_NAME" \
     --floating \
     --cwd "$CWD" \
-    -- pi "${PI_FLAGS[@]}" "$PROMPT"; then
+    -- "$PI_BIN" "${PI_FLAGS[@]}" "$PROMPT"; then
     echo "✅ Successfully launched pi in floating pane '$PANE_NAME' with flags"
   else
     echo "❌ Failed to launch pi in pane '$PANE_NAME'" >&2
