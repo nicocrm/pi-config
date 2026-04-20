@@ -18,6 +18,8 @@ export default function (pi: ExtensionAPI) {
     /\baws lambda (create|update)/,
     // I better keep an eye on this
     /\bssh\b/,
+    // usually rather run uv
+    /\bpip3? install\b/,
   ];
 
 	pi.on("tool_call", async (event, ctx) => {

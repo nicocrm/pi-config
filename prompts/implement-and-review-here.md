@@ -1,5 +1,5 @@
 ---
-description: Implement the current plan with review, in an isolated git worktree
+description: Implement the current plan with review, in the current branch (no worktree)
 ---
 Invoke the `implement-and-review` chain via the subagent tool (use `chainName: "implement-and-review"`).
 
@@ -14,7 +14,7 @@ Compose the task string as:
 ```
 Plan: <resolved plan path>
 
-Start by setting up an isolated git worktree (use /skill:using-git-worktrees) before doing anything else.
+Work in the current branch; do not create a git worktree.
 ```
 
 Then invoke the chain.

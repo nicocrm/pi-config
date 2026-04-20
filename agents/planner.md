@@ -5,6 +5,7 @@ tools: read, grep, find, ls, write
 model: us.anthropic.claude-opus-4-6-v1
 thinking: high
 output: plan.md
+skills: writing-plans
 defaultReads: context.md
 ---
 
