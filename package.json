@@ -16,13 +16,7 @@
       "node_modules/pi-superpowers"
     ],
     "skills": [
-      "./skills",
-      "node_modules/pi-superpowers/skills",
-      "!node_modules/pi-superpowers/skills/using-git-worktrees",
-      "!node_modules/pi-superpowers/skills/executing-plans",
-      "!node_modules/pi-superpowers/skills/test-driven-development",
-      "!node_modules/pi-superpowers/skills/verification-before-completion",
-      "!node_modules/pi-superpowers/skills/writing-plans"
+      "./skills"
     ],
     "prompts": [
       "./prompts"
