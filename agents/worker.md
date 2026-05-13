@@ -2,6 +2,9 @@
 name: worker
 description: General-purpose subagent with full capabilities, isolated context
 model: us.anthropic.claude-sonnet-4-6
+systemPromptMode: replace
+inheritProjectContext: true
+inheritSkills: true
 defaultReads: context.md, plan.md
 defaultProgress: true
 ---

@@ -38,8 +38,15 @@ function notifyWindows(title: string, body: string): void {
 	execFile("powershell.exe", ["-NoProfile", "-Command", windowsToastScript(title, body)]);
 }
 
+function notifyMac(title: string, body: string): void {
+	const { execFile } = require("child_process");
+	execFile("terminal-notifier", ["-title", title, "-message", body, "-sound", "Hero"]);
+}
+
 function notify(title: string, body: string): void {
-	if (process.env.WT_SESSION) {
+	if (process.platform === "darwin") {
+		notifyMac(title, body);
+	} else if (process.env.WT_SESSION) {
 		notifyWindows(title, body);
 	} else if (process.env.KITTY_WINDOW_ID) {
 		notifyOSC99(title, body);
@@ -49,7 +56,9 @@ function notify(title: string, body: string): void {
 }
 
 export default function (pi: ExtensionAPI) {
-	pi.on("agent_end", async () => {
-		notify("Pi", "Ready for input");
+	pi.on("agent_end", async (event, ctx) => {
+    if(ctx.hasUI) {
+      notify("Pi", "Ready for input");
+    }
 	});
 }

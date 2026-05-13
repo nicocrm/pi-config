@@ -2,7 +2,7 @@
 name: planner
 description: Creates implementation plans from context and requirements
 tools: read, grep, find, ls, write
-model: us.anthropic.claude-opus-4-6-v1
+model: us.anthropic.claude-opus-4-7
 thinking: high
 output: plan.md
 skills: writing-plans

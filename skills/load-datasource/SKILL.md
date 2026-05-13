@@ -53,6 +53,9 @@ print(df.describe())
 
 Replace `<DATASOURCE_ID>` and `<EMAIL>` with actual values.
 
+Optionally, use `qp.keep_full_config = True` to retain the hidden fields - otherwise the framework
+will strip fields with a leading underscore.
+
 ### 2. (Optional) Save as parquet
 
 If the user wants to save the data, add to the script:
