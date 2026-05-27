@@ -4,16 +4,9 @@
   "keywords": [
     "pi-package"
   ],
-  "dependencies": {
-    "pi-superpowers": "^0.2.0"
-  },
-  "bundledDependencies": [
-    "pi-superpowers"
-  ],
   "pi": {
     "extensions": [
-      "./extensions",
-      "node_modules/pi-superpowers"
+      "./extensions"
     ],
     "skills": [
       "./skills"
@@ -21,8 +14,5 @@
     "prompts": [
       "./prompts"
     ]
-  },
-  "bundleDependencies": [
-    "pi-superpowers"
-  ]
+  }
 }
